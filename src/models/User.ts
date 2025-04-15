@@ -1,6 +1,17 @@
-import mongoose from 'mongoose';
+// models/User.ts
+import mongoose, { Document } from 'mongoose';
 
-const userSchema = new mongoose.Schema({
+// 定义 IUser 接口，继承自 mongoose.Document
+export interface IUser extends Document {
+  _id: string;   // 确保 _id 是字符串类型
+  name: string;
+  email: string;
+  password: string;
+  createdAt: Date;
+}
+
+// 定义 Mongoose schema
+const userSchema = new mongoose.Schema<IUser>({
   name: {
     type: String,
     required: [true, '请输入用户名'],
@@ -24,6 +35,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.models.User || mongoose.model('User', userSchema);
+// 导出 Mongoose 模型
+const User = mongoose.models.User || mongoose.model<IUser>('User', userSchema);
 
 export default User;

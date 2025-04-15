@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { api } from '@/lib/api';
-import User from '@/models/User'; // 默认导入
+import { IUser } from '@/models/User'; // 导入 IUser 类型
 
 export default function UsersPage() {
-  const [users, setUsers] = useState<typeof User[]>([]); // 使用 typeof 来引用 User 的类型
+  const [users, setUsers] = useState<IUser[]>([]); // 使用 IUser 类型
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -35,7 +35,7 @@ export default function UsersPage() {
       if (response.error) {
         setError(response.error);
       } else {
-        setUsers(users.filter(user => user._id !== userId));
+        setUsers(users.filter(user => user._id !== userId)); // _id 已知
       }
     } catch (error) {
       setError('Failed to delete user');
