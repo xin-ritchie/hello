@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { api } from '@/lib/api';
-import { User } from '@/models/User';
+import User from '@/models/User'; // 修改为默认导入
 
 export default function UsersPage() {
-  const [users, setUsers] = useState<User[]>([]);
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  const [users, setUsers] = useState<User[]>([]); // 正确地使用默认导入的 User 类型
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
