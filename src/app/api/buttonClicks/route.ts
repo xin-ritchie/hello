@@ -7,7 +7,8 @@ export async function GET() {
     await connectToDatabase();
     const buttonClicks = await ButtonClick.find();
     return NextResponse.json({ buttonClicks });
-  } catch (error) {
+  } catch (err) {
+    console.error('Failed to fetch button clicks:', err);
     return NextResponse.json({ error: 'Failed to fetch button clicks' }, { status: 500 });
   }
 }
@@ -27,7 +28,8 @@ export async function POST(request: Request) {
     );
 
     return NextResponse.json({ buttonClick });
-  } catch (error) {
+  } catch (err) {
+    console.error('Failed to update button click:', err);
     return NextResponse.json({ error: 'Failed to update button click' }, { status: 500 });
   }
 }

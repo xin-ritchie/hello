@@ -13,3 +13,4 @@ export default function Home() {
     </div>
   );
 }
+import Image from "./components/Image";
