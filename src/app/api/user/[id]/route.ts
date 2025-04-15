@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
+import {connectToDatabase}from '@/lib/mongodb';
 import User from '@/models/User';
 
 // 获取用户信息
