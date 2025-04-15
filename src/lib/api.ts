@@ -1,5 +1,3 @@
-import { User } from '@/models/User';
-
 interface LoginData {
   email: string;
   password: string;
