@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import {connectToDatabase}from '@/lib/mongodb';
+import { connectToDatabase } from '@/lib/mongodb';
 import User from '@/models/User';
 import bcrypt from 'bcryptjs';
 
@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     const { email, password } = await request.json();
 
     // 连接数据库
-    await connectDB();
+    await connectToDatabase();
 
     // 查找用户
     const user = await User.findOne({ email });

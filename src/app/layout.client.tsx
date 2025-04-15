@@ -1,7 +1,6 @@
 'use client';
 
 import { Geist, Geist_Mono } from "next/font/google";
-import { useEffect, useState } from 'react';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,12 +17,6 @@ export default function RootLayoutClient({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
     <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}

@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import {connectToDatabase}from '@/lib/mongodb';
+import { connectToDatabase } from '@/lib/mongodb';
 import User from '@/models/User';
 
 // 获取用户信息
 export async function GET(request: Request, { params }: { params: { id: string } }) {
   try {
-    await connectDB();
+    await connectToDatabase();
 
     const user = await User.findById(params.id).select('-password');
     if (!user) {

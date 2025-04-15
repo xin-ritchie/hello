@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import {connectToDatabase}from '@/lib/mongodb';
+import { connectToDatabase } from '@/lib/mongodb';
 import User from '@/models/User';
 
 // Get all users
 export async function GET() {
   try {
-    await connectDB();
+    await connectToDatabase();
     const users = await User.find().select('-password');
     return NextResponse.json({ user: users });
   } catch (error) {
