@@ -14,7 +14,7 @@ interface UpdateUserData {
   email?: string;
 }
 
-interface ApiResponse<T = any> {
+interface ApiResponse<T = unknown> {
   message?: string;
   error?: string;
   user?: T;
