@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import User from '@/models/User';
-
-// 获取用户信息
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+import { NextRequest } from 'next/server';
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
   try {
     await connectToDatabase();
 
@@ -26,7 +25,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
 }
 
 // 更新用户信息
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
   try {
     const { name, email } = await request.json();
     await connectDB();
@@ -73,7 +72,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 }
 
 // 删除用户
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
   try {
     await connectDB();
 
