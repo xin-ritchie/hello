@@ -30,8 +30,9 @@ export default function AllButtonPage() {
       if (data.buttonClicks) {
         setButtonClicks(data.buttonClicks);
       }
-    } catch (err) {
+    } catch (error) {
       setError('获取按钮点击数据失败');
+      console.error('Failed to fetch button clicks:', error);
     } finally {
       setLoading(false);
     }
@@ -59,8 +60,9 @@ export default function AllButtonPage() {
           return updatedClicks;
         });
       }
-    } catch (err) {
+    } catch (error) {
       setError('更新按钮点击次数失败');
+      console.error('Failed to update button click:', error);
     }
   };
 

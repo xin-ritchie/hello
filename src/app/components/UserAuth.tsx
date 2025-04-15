@@ -39,8 +39,9 @@ export default function UserAuth({ onAuthSuccess }: UserAuthProps) {
       } else {
         onAuthSuccess?.();
       }
-    } catch (err) {
+    } catch (error) {
       setError('请求失败，请稍后重试');
+      console.error('Authentication failed:', error);
     } finally {
       setLoading(false);
     }

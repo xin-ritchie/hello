@@ -18,8 +18,9 @@ export default function UsersPage() {
         } else if (Array.isArray(response.user)) {
           setUsers(response.user);
         }
-      } catch (err) {
+      } catch (error) {
         setError('Failed to fetch users');
+        console.error('Failed to fetch users:', error);
       } finally {
         setLoading(false);
       }
@@ -36,8 +37,9 @@ export default function UsersPage() {
       } else {
         setUsers(users.filter(user => user._id !== userId));
       }
-    } catch (err) {
+    } catch (error) {
       setError('Failed to delete user');
+      console.error('Failed to delete user:', error);
     }
   };
 
