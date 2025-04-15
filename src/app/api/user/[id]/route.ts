@@ -2,8 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import User from '@/models/User';
 
+interface Context {
+  params: {
+    id: string;
+  };
+}
+
 // 获取用户信息
-export async function GET(request: NextRequest, context: any) {
+export async function GET(request: NextRequest, context: Context) {
   const { id } = context.params;
 
   try {
@@ -22,7 +28,7 @@ export async function GET(request: NextRequest, context: any) {
 }
 
 // 更新用户信息
-export async function PUT(request: NextRequest, context: any) {
+export async function PUT(request: NextRequest, context: Context) {
   const { id } = context.params;
 
   try {
@@ -62,7 +68,7 @@ export async function PUT(request: NextRequest, context: any) {
 }
 
 // 删除用户
-export async function DELETE(request: NextRequest, context: any) {
+export async function DELETE(request: NextRequest, context: Context) {
   const { id } = context.params;
 
   try {
